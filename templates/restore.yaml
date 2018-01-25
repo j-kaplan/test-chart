@@ -1,0 +1,13 @@
+apiVersion: foo.my.domain.com/v1alpha1
+kind: FooRestore
+metadata:
+  labels:
+    app: {{ template "test-chart.name" . }}
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
+  name: {{ template "test-chart.fullname" . }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install

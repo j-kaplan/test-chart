@@ -4,6 +4,8 @@
 
 replicaCount: 1
 
+fail: true
+
 image:
   repository: nginx
   tag: stable
